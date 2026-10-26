@@ -378,3 +378,14 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
+
+// Reduced to 6 Rounds from 31 rounds
+// M=2^16 
+// We fixed alpha and beta so that we can do linear approximation alpha chooses one 21st text bit of plaintext and beta select bit from the active nibble 
+// Precomputation of sptable so it no needed to recalculate it by applying sbox and permutation layer 
+// The packedbit mainly extract the 16 bits from the active nibbles 
+// Evaluateparitybit basically do the reverse it extract the 4 nibble state and convert them into 64 bits also calculate parity with beta then give result 
+// FWHT basically helps incomputation it converts the calucaltion from M^2 to MlogM 
+// 2^24 pair of known ciphertext and plaintext pair are chosen 
+// verification of cipher 
+// FWHT(t) and Fwht(f) undono ka product fhir se FWHT and then divide by M krke final absolute scores for each key then arrange it into decreasing order then for the top 10 guesses it checks the match with correct key 
